@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CredentialService } from '../../services/CredentialService';
 
 @Component({
-  selector: 'app-credential-list',
+  selector: 'credential-list',
   templateUrl: './credential-list.component.html',
   styleUrls: ['./credential-list.component.scss']
 })
