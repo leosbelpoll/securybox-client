@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
 
-import { Credential } from '../models/Credential';
+import { ICredential } from '../models/ICredential';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CredentialService {
-    private url = 'http://localhost:3000/credentials';
+    private _url = 'http://localhost:3000/credentials';
 
     constructor(private http: HttpClient) { }
 
@@ -20,12 +19,8 @@ export class CredentialService {
         })
     }
 
-    getCredentials(): Observable<Credential> {
-        return this.http.get(this.url)
-            .pipe(
-                retry(1),
-                catchError(this.errorHanlder)
-            )
+    getCredentials(): Observable<ICredential[]> {
+        return this.http.get<ICredential[]>(this._url);
     }
 
     errorHanlder(err) {
