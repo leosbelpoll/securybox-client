@@ -20,9 +20,9 @@ export class CredentialListComponent implements OnInit {
   }
 
   getCredentials() {
-    return this.service.getCredentials().subscribe((data: {}) => {
+    this.service.getCredentials().subscribe((data: {}) => {
       this.credentialList = data;
-    })
+    });
   }
 
 }

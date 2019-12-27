@@ -15,4 +15,8 @@ export class CredentialService {
     getCredentials(): Observable<ICredential[]> {
         return this.http.get<ICredential[]>(this._url);
     }
+
+    getCredential(id): Observable<ICredential> {
+        return this.http.get<ICredential>(`${this._url}/${id}`);
+    }
 }
